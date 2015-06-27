@@ -24,7 +24,7 @@ class Subscription(db.Model):
     def __init__(self, email, word):
         self.email = email
         self.word = word
-        self.pub_date = datetime.utc_now()
+        self.pub_date = datetime.utcnow()
 
     def __repr__(self):
         return "Email: {0} , word: {1}".format(self.email, self.word)
