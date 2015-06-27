@@ -19,6 +19,7 @@ class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=False)
     word = db.Column(db.String, unique=False)
+    last_sent = db.Column(db.DateTime)
     pub_date = db.Column(db.DateTime)
 
     def __init__(self, email, word):
@@ -31,6 +32,18 @@ class Subscription(db.Model):
 
     def __str__(self):
         return "Email: {0} , word: {1}".format(self.email, self.word)
+
+class Word(db.model):
+    id = db.Column(db.Integer, primary_key=True)
+    word = db.Column(db.String, unique=True)
+    last_updated = db.Column(db.DateTime)
+    prev_averages = db.Column(db.ARRAY(db.Integer))
+    pub_date = db.Column(db.DateTime)
+
+    def __init__(self, word):
+        self.word = word
+        self.prev_averages = [None for i in xrange(7)]
+        self.pub_date = datetime.utcnow()
 
 @app.route('/')
 def hello_world():
@@ -60,6 +73,13 @@ def addSubscription():
     db.session.add(newSub)
     db.session.commit()
     return "Added girls for allen.wang@hiswebsite.url"
+
+@app.route("/addword")
+def addSubscription():
+    newWord = Word("girls")
+    db.session.add(newSub)
+    db.session.commit()
+    return "Added girls"
 
 @app.route("/othersub")
 def addOther():
