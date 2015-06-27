@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import json
 import time
 
@@ -7,36 +7,12 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='template')
 
 @app.route('/')
 def hello_world():
-    obj = {
-        'key': 3,
-        'key2': 5,
-        'key3': 6 
-    }
-    return json.dumps(obj)
-
-send_email = BackgroundScheduler(daemon=True)
-send_email.start()
-
-@send_email.scheduled_job('interval', seconds=20)
-def timed_update():
-    
-    # get information for the words
-    # get the words to update
-    # for people in databse, get their words, and send email
-
-def query_words():
-    while 
-        try:
-            WordStatus.write(word, is_word_trending(word))
-
-        except:
-
-            time.sleep(60*15)
-    
+    template_vars = {}
+    return render_template('index.html', **template_vars)
 
 
 # def query_words

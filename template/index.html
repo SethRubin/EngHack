@@ -1,8 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../static/css/frontpage.css">
+        <link rel="stylesheet" type="text/css" 
+            href="{{ url_for('static', filename='css/frontpage.css') }}">
     </head>
-
     <body>
         <div class = "bodyWrapper">
             <div class = "description" >
@@ -46,8 +46,8 @@
             </div>
         </div>
         
-        <script src= "../static/js/jquery-1.11.3.min.js"></script>
-        <script src="../static/js/front.js"></script>
+        <script src= "{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/front.js') }}"></script>
     </body>
 
 </html>
