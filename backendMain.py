@@ -79,7 +79,7 @@ def add_subscription():
 @app.route("/get_all_emails/")
 def get_all_emails():
     subs = Subscription.query.all()
-    s = [sub.email for sub in subs]
+    s = set([sub.email for sub in subs])
     return 'ok'
 
 # @app.route("/remove_subscription/", methods=['POST'])
