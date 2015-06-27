@@ -13,7 +13,7 @@ def is_current_in_second_std_dev(past_average_times, current):
     stddev = calculate_stddev(past_average_times)
     return (current >= mean - 2*stddev) and (current <= mean + 2*stddev)
 
-def solver(word):
+def is_word_trending(word):
     average_times = get_past_average_times(word)
     print average_times
     past_average_times = average_times[1:]
