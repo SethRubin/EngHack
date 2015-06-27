@@ -44,6 +44,7 @@ sendEmail.start()
 @sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
     #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
+    pass
 
 @app.route("/createall")
 def createAll():
