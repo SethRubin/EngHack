@@ -23,19 +23,19 @@ def create_all():
 
 @app.route("/add_subscription/", methods=['POST'])
 def add_subscription():
-	print 1
-	sys.stdout.flush()
+    print 1
+    sys.stdout.flush()
     email = str(request.form['email'])
     word = str(request.form['word'])
-	print 2
-	sys.stdout.flush()
+    print 2
+    sys.stdout.flush()
     newSub = Subscription(email, word)
-	print 3
-	sys.stdout.flush()
+    print 3
+    sys.stdout.flush()
     db.session.add(newSub)
     db.session.commit()
-	print 4
-	sys.stdout.flush()
+    print 4
+    sys.stdout.flush()
     return "Subscribed " + email + " to " + word
 
 # @app.route("/get_trending_data/<word>")
