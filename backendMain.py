@@ -1,4 +1,4 @@
-import os
+import os, sys
 import psycopg2
 import urlparse
 import json
