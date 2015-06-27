@@ -14,7 +14,6 @@ from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
-db.create_all()
 
 class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,6 +44,11 @@ sendEmail.start()
 @sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
     bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
+
+@app.route("/createall")
+def createAll():
+    db.create_all()
+    return "Created all!"
 
 @app.route("/addsub")
 def addSubscription():
