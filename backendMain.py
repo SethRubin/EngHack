@@ -69,8 +69,8 @@ def create_all():
 
 @app.route("/add_subscription/", methods=['POST'])
 def add_subscription():
-    email=request.data['email']
-    word=request.data['word']
+    email=json.loads(request.data)['email']
+    word=json.loads(request.data)['word']
     newSub = Subscription(email, word)
     db.session.add(newSub)
     db.session.commit()
