@@ -67,7 +67,7 @@ def addOther():
 @app.route("/getallsub")
 def getAllSub():
     try:
-        subs = Subscription.query.all()
+        subs = []#Subscription.query.all()
         return subs
         #return json.dumps(subs)
     except:
