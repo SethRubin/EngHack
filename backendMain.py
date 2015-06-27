@@ -43,7 +43,7 @@ sendEmail.start()
 
 @sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
-    bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
+    #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
 
 @app.route("/createall")
 def createAll():
@@ -67,7 +67,7 @@ def addOther():
 @app.route("/getallsub")
 def getAllSub():
     subs = Subscription.query.all()
-    return len(subs)
+    return str(len(subs))
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
