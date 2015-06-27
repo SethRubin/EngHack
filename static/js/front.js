@@ -1,3 +1,4 @@
+var wordCount = 0;
 
 //dumb implementation to change the look of the button.
 $(".leftselection").click(function( e ){
@@ -5,7 +6,7 @@ $(".leftselection").click(function( e ){
         $(".rightselection").children().toggleClass('selected').toggleClass('unselected')
         $(".leftselection").children().toggleClass('selected').toggleClass('unselected')
     }
-}); 
+});
 
 $(".rightselection").click(function( e ){
     if($(".rightselection").children().is("div.unselected")){
@@ -30,8 +31,14 @@ $(".sendRequest").click(function( e ){
     }
 });
 
-$(".newSubWord").click(function(e){
-    $(".wordList").append($(".addNewWord").val()+"<br>");
-    
+$(".newSubWord").click(function(e){ 
+    if($(".addNewWord").val() != ""){
+        $(".subscribed").append("<div class = 'wordList'>" + $(".addNewWord").val() + "</div><div class = 'deleteWord'></div><br><br>");
+        wordCount++;
+    }
     $(".addNewWord").val("");
+});
+$(this).on('click','.deleteWord', function(e) {
+    alert("WEOW!");
+    //$(this).removeClass('wordList');
 });

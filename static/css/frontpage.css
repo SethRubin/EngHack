@@ -33,6 +33,7 @@ div.selection{
     font-weight:bold;
     font-size:25px;
     line-height:50px;
+    border:1px solid black;
 }
 
 div.leftselection{
@@ -42,12 +43,12 @@ div.leftselection{
 }
 div.selected{
     width:100%;
-    background-color:#A2BFF4;
+    background-color:#0099FF;
     height:100%;
     color:white;
 }
 div.selected:active{
-    background-color:#8299C3;
+    background-color:#5CADFF;
 }
 
 div.rightselection{
@@ -163,6 +164,22 @@ div.subscribed{
     text-align:left;
     background-color:white;
     height:90%;
+}
+
+div.wordList{
+    float:left;
+    height:20px;
+}
+div.deleteWord{
+    float:right;
+    margin-top:2px;
+    height:20px;
+    width:50px;
+    background-color:black;
+}
+div.subscribedWord{
+    float:left;
+    margin-left:20px;
 }
 
 div.wordSearch{
