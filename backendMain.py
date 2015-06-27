@@ -38,6 +38,11 @@ sendEmail.start()
 def timed_job():
     bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
 
+@app.route("/createall")
+def create():
+    db.create_all()
+    return "Created all in DB"
+
 @app.route("/addsub")
 def addSubscription():
     newSub = Subscription("allen.wang@hiswebsite.url", "girls")
