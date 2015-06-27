@@ -76,11 +76,11 @@ def add_subscription():
     db.session.commit()
     return "Subscribed " + email + " to " + word
 
-@app.route("/get_all_subscription/")
+@app.route("/get_all_emails/")
 def get_all_subscription():
     subs = Subscription.query.all()
-    sub_json = {"sub": subs}
-    return json.dumps(sub_json)
+    s = set([sub.email for sub in subs])
+    return json.dumps(s)
 
 # @app.route("/remove_subscription/", methods=['POST'])
 # def remove_subscription():
