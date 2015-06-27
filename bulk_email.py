@@ -42,4 +42,3 @@ def bulk_email(words, recipients):
         s.sendmail(me, recipient, msg.as_string())
 
     s.quit()
-
