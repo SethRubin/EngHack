@@ -33,12 +33,17 @@ $(".sendRequest").click(function( e ){
 
 $(".newSubWord").click(function(e){ 
     if($(".addNewWord").val() != ""){
-        $(".subscribed").append("<div class = 'wordList'>" + $(".addNewWord").val() + "</div><div class = 'deleteWord'></div><br><br>");
-        wordCount++;
+        ++wordCount;
+        $(".subscribed").append("<div class = 'wordList' id='id"+wordCount+"'>" + $(".addNewWord").val() + "</div><div class = 'deleteWord' id='"+wordCount+"'></div>");
     }
     $(".addNewWord").val("");
 });
-$(this).on('click','.deleteWord', function(e) {
-    alert("WEOW!");
-    //$(this).removeClass('wordList');
+
+
+$(document).on('click','.deleteWord', function(e) {
+    var subWordID = "id"+e.target.id;
+    //$("#"+subWordID).css('display','none');
+    //$(e.target).css('display','none');
+    $("#"+subWordID).remove();
+    $(e.target).remove();
 });
