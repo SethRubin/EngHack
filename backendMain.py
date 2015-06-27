@@ -54,19 +54,20 @@ def createAll():
     db.create_all()
     return "Created all!"
 
-@app.route("/addsub")
-def addSubscription():
-    newSub = Subscription("allen.wang@hiswebsite.url", "girls")
+@app.route("/addsub/<word>/<email>")
+def addSubscription(word, email):
+    newSub = Subscription(email, word)
     db.session.add(newSub)
     db.session.commit()
-    return "Added girls for allen.wang@hiswebsite.url"
+    return "Subscribed " + email + " to " + word
 
-@app.route("/othersub")
-def addOther():
-    otherSub = Subscription("marko@marko.com", "potatoes")
-    db.session.add(otherSub)
-    db.session.commit()
-    return "Added potatoes for marko@marko.com"
+
+# @app.route("/othersub")
+# def addOther():
+#     otherSub = Subscription("marko@marko.com", "potatoes")
+#     db.session.add(otherSub)
+#     db.session.commit()
+#     return "Added potatoes for marko@marko.com"
 
 @app.route("/getallsub")
 def getAllSub():
