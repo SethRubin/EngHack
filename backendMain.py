@@ -9,18 +9,26 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from bulk_email import bulk_email
 from apscheduler.schedulers.background import BackgroundScheduler
 
+from datetime import datetime
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
+db.create_all()
 
 class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(80), unique=False)
-    word = db.Column(db.String(80), unique=False)
+    email = db.Column(db.String, unique=False)
+    word = db.Column(db.String, unique=False)
+    pub_date = db.Column(db.DateTime)
 
     def __init__(self, email, word):
         self.email = email
         self.word = word
+        self.pub_date = datetime.utc_now()
+
+    def __repr__(self):
+        return "Email: {0} , word: {1}".format(self.email, self.word)
 
 @app.route('/')
 def hello_world():
@@ -38,11 +46,6 @@ sendEmail.start()
 def timed_job():
     bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
 
-@app.route("/createall")
-def create():
-    db.create_all()
-    return "Created all in DB"
-
 @app.route("/addsub")
 def addSubscription():
     newSub = Subscription("allen.wang@hiswebsite.url", "girls")
@@ -56,6 +59,11 @@ def addOther():
     db.session.add(otherSub)
     db.session.commit()
     return "Added potatoes for marko@marko.com"
+
+@app.route("/getallsub")
+def getAllSub():
+    subs = Subscription.query.all()
+    return json.dumps(subs)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
