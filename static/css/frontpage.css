@@ -1,0 +1,193 @@
+body
+{
+    width:100%;
+    height:130%;
+    background-color:#0099FF;
+}
+
+div.bodyWrapper{
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height:70%;
+    width:60%;
+    
+}
+div.description
+{
+    line-height:50px;
+    border-radius: 5px;
+    min-height: 50px;
+    font-weight:bold;
+    font-size:110%;
+    color:white;  
+}
+
+div.selection{
+    margin-top:3%;
+    margin-left:auto;
+    margin-right:auto;
+    width:40%;
+    height:50px;
+    background-color:white;
+    font-weight:bold;
+    font-size:25px;
+    line-height:50px;
+    border:1px solid black;
+}
+
+div.leftselection{
+    float:left;
+    width:50%;
+    height:100%;
+}
+div.selected{
+    width:100%;
+    background-color:#0099FF;
+    height:100%;
+    color:white;
+}
+div.selected:active{
+    background-color:#5CADFF;
+}
+
+div.rightselection{
+    float:right;
+    width:50%;
+    height:100%;
+}
+div.unselected{
+    width:100%;
+    background-color:#F8F8E6;
+    height:100%;
+    color:black;
+}
+div.unselected:active{
+    background-color:#FFFFFF;
+}
+
+div.textBox{
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right:auto;
+    padding:0px;
+}
+
+input[type=text]{
+    margin-right:5px;
+    border:2px solid #456879;
+	border-radius:10px;
+	height: 4%;
+	width: 50%;
+    background-color: white;
+}
+input[type=text]:active{
+    background-color:#CCFFFF;
+}
+
+div.sendRequest{
+    margin-top: 3%;
+    width:20%;
+    height: 50px;
+    background-color:#B2FFFF;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:50px;
+    font-weight:bold;
+}
+div.sendRequest:active{
+    background-color:#90CFCF;
+}
+
+div.subscribedWrapper{
+    display:block;
+    padding-top:1%;
+    margin-top:5%;
+    width:60%;
+    margin-left: auto;
+    margin-right:auto;
+    background-color:white;   
+}
+
+div.subscribeBar{
+    padding-left:0px;
+    padding-right:0px;
+    min-height:8%;
+    width:100%;
+    border-bottom:1px solid gray;
+}
+
+input[type=text].addNewWord{
+    margin-right:5px;
+    border:2px solid #456879;
+    border-radius:3px;
+    height:4%;
+    width:67%;
+    background-color:white;
+    display:none;
+    float:left;
+}
+div.newSubWord{
+    float:right;
+    margin-left: 5px;
+    display:none;
+    border: 1px solid #456879;
+    border-radius:3px;
+    height:4%;
+    width:27%;
+    background-color:antiquewhite;
+    text-align:center;
+    line-height:30px;
+    
+}
+div.newSubWord:active{
+    background-color:bisque;
+}
+
+
+div.wordSearchWrapper{
+    display:none;
+    padding-top:3%;
+    margin-top:5%;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:white;
+}
+
+div.subscribed{
+    margin-top:2%;
+    margin-left: auto;
+    margin-right:auto;
+    width:90%;
+    
+    text-align:left;
+    background-color:white;
+    height:90%;
+}
+
+div.wordList{
+    float:left;
+    height:20px;
+}
+div.deleteWord{
+    float:right;
+    margin-top:2px;
+    height:20px;
+    width:50px;
+    background-color:black;
+}
+div.subscribedWord{
+    float:left;
+    margin-left:20px;
+}
+
+div.wordSearch{
+    padding-top:2%;
+    margin-left:auto;
+    margin-right:auto;
+    width: 80%;
+    
+    background-color:white;
+    height:90%;
+}

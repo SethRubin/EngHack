@@ -33,17 +33,17 @@ class Subscription(db.Model):
     def __str__(self):
         return "Email: {0} , word: {1}".format(self.email, self.word)
 
-class Word(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    word = db.Column(db.String, unique=True)
-    last_updated = db.Column(db.DateTime)
-    # prev_averages = db.Column(SQLAlchemy.dialects.postgresql.ARRAY(db.Integer, dimensions=7))
-    pub_date = db.Column(db.DateTime)
+# class Word(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     word = db.Column(db.String, unique=True)
+#     last_updated = db.Column(db.DateTime)
+#     # prev_averages = db.Column(SQLAlchemy.dialects.postgresql.ARRAY(db.Integer, dimensions=7))
+#     pub_date = db.Column(db.DateTime)
 
-    def __init__(self, word):
-        self.word = word
-        # self.prev_averages = [None for i in xrange(7)]
-        self.pub_date = datetime.utcnow()
+#     def __init__(self, word):
+#         self.word = word
+#         # self.prev_averages = [None for i in xrange(7)]
+#         self.pub_date = datetime.utcnow()
 
 @app.route('/')
 def hello_world():
