@@ -45,17 +45,26 @@ class Subscription(db.Model):
 #         # self.prev_averages = [None for i in xrange(7)]
 #         self.pub_date = datetime.utcnow()
 
-@app.route('/')
-def hello_world():
-    obj = {
-        'key': 3,
-        'key2': 5,
-        'key3': 6 
-    }
-    return json.dumps(obj)
+send_email = BackgroundScheduler(daemon=True)
+send_email.start()
 
-sendEmail = BackgroundScheduler(daemon=True)
-sendEmail.start()
+# @send_email.scheduled_job('interval', hours=24)
+# def timed_update():
+    
+#     for user in users:
+#         words_to_send = query_words(user.words)
+#         bulk_email(words, [user])
+
+# def query_words(words):
+#     trending_words = []
+#     i = 0
+#     while i < len(words)
+#         try:
+#             if is_word_trending(word):
+#                 words.append(word)
+#             i += 1
+#         except:
+#             time.sleep(60*15)
 
 @sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
