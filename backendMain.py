@@ -86,7 +86,7 @@ def remove_subscription():
     email = str(request.form['email'])
     word = str(request.form['word'])
     del_subscription = Subscription(email, word)
-    db.session.add(del_subscription)
+    db.session.delete(del_subscription)
     db.session.commit()
     return "Removed"
 
