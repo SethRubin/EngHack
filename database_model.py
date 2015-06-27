@@ -71,20 +71,6 @@ def timed_job():
     #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
     pass
 
-@app.route("/create_all/")
-def create_all():
-    db.create_all()
-    return "Created all!"
-
-@app.route("/add_subscription/", methods=['POST'])
-def add_subscription():
-    email = str(request.form['email'])
-    word = str(request.form['word'])
-    newSub = Subscription(email, word)
-    db.session.add(newSub)
-    db.session.commit()
-    return "Subscribed " + email + " to " + word
-
 def get_all_emails():
     subs = Subscription.query.all()
     s = set([sub.email for sub in subs])
