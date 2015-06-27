@@ -69,11 +69,11 @@ def create_all():
 
 @app.route("/add_subscription/", methods=['POST'])
 def add_subscription():
-    email=request.form['email']
-    word=request.form['word']
+    email=str(request.form['email'])
+    word=str(request.form['word'])
     newSub = Subscription(email, word)
-    # db.session.add(newSub)
-    # db.session.commit()
+    db.session.add(newSub)
+    db.session.commit()
     return "Subscribed " + email + " to " + word
 
 @app.route("/get_all_subscription/")
