@@ -13,7 +13,25 @@ def is_current_in_second_std_dev(past_average_times, current):
     stddev = calculate_stddev(past_average_times)
     return (current >= mean - 2*stddev) and (current <= mean + 2*stddev)
 
-def word_trending_data(word):
+# def word_trending_data(word):
+#     average_times = get_past_average_times(word)
+#     past_average_times = average_times[1:]
+#     if average_times[0] == None:
+#         return False
+#     if average_times[1] == None:
+#         return True
+#     a = is_current_min(past_average_times, average_times[0])
+#     b = is_current_in_second_std_dev(past_average_times, average_times[0])
+#     data = {
+#         trend: a and not b,
+#         past_average_times: past_average_times,
+#         current_time: average_times[0],
+#         mean: calculate_mean(past_average_times),
+#         stddev: calculate_stddev(past_average_times),
+#     }
+#     return data
+
+def is_word_trending(word):
     average_times = get_past_average_times(word)
     past_average_times = average_times[1:]
     if average_times[0] == None:
@@ -22,14 +40,4 @@ def word_trending_data(word):
         return True
     a = is_current_min(past_average_times, average_times[0])
     b = is_current_in_second_std_dev(past_average_times, average_times[0])
-    data = {
-        trend: a and not b,
-        past_average_times: past_average_times,
-        current_time: average_times[0],
-        mean: calculate_mean(past_average_times),
-        stddev: calculate_stddev(past_average_times),
-    }
-    return data
-
-def is_word_trending(word):
-    return word_trending_data(word)['trend']
+    return a and not b

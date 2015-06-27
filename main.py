@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import json
 import time
 
-from solver.algo import is_word_trending, word_trending_data
+from solver.algo import is_word_trending#, word_trending_data
 from bulk_email import bulk_email
 from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -30,11 +30,10 @@ def add_subscription():
     db.session.commit()
     return "Subscribed " + email + " to " + word
 
-@app.route("/get_trending_data/<word>")
-def get_trending_data(word):
-    return word_trending_data(word)
+# @app.route("/get_trending_data/<word>")
+# def get_trending_data(word):
+#     return word_trending_data(word)
 
-# def query_words
 def filter_by_trending(words):
     trending_words = []
     i = 0
