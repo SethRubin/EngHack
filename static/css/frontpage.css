@@ -53,7 +53,7 @@ div.selected:active{
     background-color:#5CADFF;
 }
 
-div.rightselection
+div.rightselection{
     border-radius:2px;
     float:right;
     width:50%;
