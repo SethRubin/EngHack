@@ -3,7 +3,7 @@ import psycopg2
 import urlparse
 import json
 
-from flask import Flask
+from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 from bulk_email import bulk_email
