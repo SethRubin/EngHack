@@ -45,41 +45,16 @@ class Subscription(db.Model):
 #         # self.prev_averages = [None for i in xrange(7)]
 #         self.pub_date = datetime.utcnow()
 
-send_email = BackgroundScheduler(daemon=True)
-send_email.start()
-
-# @send_email.scheduled_job('interval', hours=24)
-# def timed_update():
-    
-#     for user in users:
-#         words_to_send = query_words(user.words)
-#         bulk_email(words, [user])
-
-# def query_words(words):
-#     trending_words = []
-#     i = 0
-#     while i < len(words)
-#         try:
-#             if is_word_trending(word):
-#                 words.append(word)
-#             i += 1
-#         except:
-#             time.sleep(60*15)
-
-@sendEmail.scheduled_job('interval', seconds=100000)
-def timed_job():
-    #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
-    pass
 
 def get_all_emails():
     subs = Subscription.query.all()
     s = set([sub.email for sub in subs])
-    return json.dumps(list(s))
+    return list(s)
 
 def get_words(email):
     subs = Subscription.query.filter_by(email=email)
-    s = [sub.word for sub in subs]
-    return json.dumps(s)
+    s = set([sub.word for sub in subs])
+    return list(s)
 
 # @app.route("/remove_subscription/", methods=['POST'])
 # def remove_subscription():
@@ -89,6 +64,8 @@ def get_words(email):
 #     db.session.delete(del_subscription)
 #     db.session.commit()
 #     return "Removed"
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
