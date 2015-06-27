@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import json
 import time
 
+from solver.algo import is_word_trending, word_trending_data
 from bulk_email import bulk_email
 from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler

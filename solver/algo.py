@@ -30,3 +30,6 @@ def word_trending_data(word):
         stddev: calculate_stddev(past_average_times),
     }
     return data
+
+def is_word_trending(word):
+    return word_trending_data(word)['trend']
