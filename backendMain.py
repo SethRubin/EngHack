@@ -49,13 +49,13 @@ def timed_job():
     #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
     pass
 
-@app.route("/createall")
-def createAll():
+@app.route("/create_all/")
+def create_all():
     db.create_all()
     return "Created all!"
 
-@app.route("/addsub/", methods=['POST'])
-def addSubscription():
+@app.route("/add_subscription/", methods=['POST'])
+def add_subscription():
     email=request.form['email']
     word=request.form['word']
     newSub = Subscription(email, word)
@@ -63,13 +63,21 @@ def addSubscription():
     db.session.commit()
     return "Subscribed " + email + " to " + word
 
-@app.route("/getallsub")
-def getAllSub():
+@app.route("/get_all_subscription/")
+def get_all_subscription():
     subs = Subscription.query.all()
     subsStr = []
     for sub in subs:
         subsStr.append(str(sub))
     return json.dumps(subsStr)
+
+@app.route("/remove_subscription/", methods=['POST'])
+def remove_subscription():
+    email=request.form['email']
+    word=request.form['word']
+    del_subscription = Subscription(email, word)
+    db.session.add(del_subscription)
+    db.session.commit()
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
