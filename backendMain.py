@@ -33,7 +33,7 @@ class Subscription(db.Model):
     def __str__(self):
         return "Email: {0} , word: {1}".format(self.email, self.word)
 
-class Word(db.model):
+class Word(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String, unique=True)
     last_updated = db.Column(db.DateTime)
