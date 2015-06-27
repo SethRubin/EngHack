@@ -1,11 +1,11 @@
 import math
 
-def calculate_mean(num):
+def calculate_mean(arr):
     """calculates mean"""
-    return sum(num) / len(num)
+    return sum(arr) / len(arr)
 
-def calculate_stddev(num):
+def calculate_stddev(arr):
     """returns the standard deviation of num"""
-    mn = calculate_mean(num)
-    variance = sum([(e-mn)**2 for e in num])
+    mn = calculate_mean(arr)
+    variance = sum([(e-mn)*(e-mn) for e in arr])/len(arr)
     return math.sqrt(variance)
