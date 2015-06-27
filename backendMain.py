@@ -84,6 +84,14 @@ def get_all_subscription():
         subsStr.append(str(sub))
     return json.dumps(subsStr)
 
+@app.route("/get_all_emails/")
+def get_all_emails():
+    subs = Subscription.query.all()
+    emails = []
+    for sub in subs:
+        emails.append(sub.email)
+    return json.dumps(emails)
+
 @app.route("/remove_subscription/", methods=['POST'])
 def remove_subscription():
     email=request.form['email']
