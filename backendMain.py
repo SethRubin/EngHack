@@ -68,7 +68,8 @@ def addOther():
 def getAllSub():
     try:
         subs = Subscription.query.all()
-        return json.dumps(subs)
+        return subs
+        #return json.dumps(subs)
     except:
         return "Error occurred:", sys.exc_info()[0]
 
