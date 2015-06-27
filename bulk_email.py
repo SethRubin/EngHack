@@ -8,7 +8,7 @@ def bulk_email(words, recipients):
     me = "sorrymarko@gmail.com"
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "UpdateMe! Words are Trending"
+    msg['Subject'] = "WordBuzz! Words are Trending"
     msg['From'] = me
 
     text = "The following words you have subscribed to are trending:\n\n" \

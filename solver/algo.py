@@ -22,6 +22,7 @@ def word_trending_data(word):
         return True
     a = is_current_min(past_average_times, average_times[0])
     b = is_current_in_second_std_dev(past_average_times, average_times[0])
+<<<<<<< HEAD
     data = {
         trend: a and not b,
         past_average_times: past_average_times,
@@ -30,3 +31,7 @@ def word_trending_data(word):
         stddev: calculate_stddev(past_average_times),
     }
     return data
+=======
+    return a and not b
+
+>>>>>>> integrated cron with twitter api and databse
