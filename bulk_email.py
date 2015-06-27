@@ -4,11 +4,11 @@ from email.mime.text import MIMEText
 
 # example usage:
 # bulk_email("hello world", ["sorrymarko@gmail.com"])
-def bulk_email(word, recipients):
+def bulk_email(words, recipients):
 	me = "sorrymarko@gmail.com"
 
 	msg = MIMEMultipart('alternative')
-	msg['Subject'] = "Test " + word
+	msg['Subject'] = "Test " + words
 	msg['From'] = me
 
 	text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttps://www.python.org"
