@@ -74,6 +74,8 @@ def getAllSub():
     subsStr = []
     for sub in subs:
         subsStr.append(str(sub))
+        print "About to print sub!"
+        print sub
     return subsStr[0]
 
 if __name__ == '__main__':
