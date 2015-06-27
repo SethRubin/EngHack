@@ -79,16 +79,17 @@ def add_subscription():
 @app.route("/get_all_subscription/")
 def get_all_subscription():
     subs = Subscription.query.all()
-    return json.dumps(subs)
+    sub_json = {"sub": subs}
+    return json.dumps(sub_json)
 
-@app.route("/remove_subscription/", methods=['POST'])
-def remove_subscription():
-    email = str(request.form['email'])
-    word = str(request.form['word'])
-    del_subscription = Subscription(email, word)
-    db.session.delete(del_subscription)
-    db.session.commit()
-    return "Removed"
+# @app.route("/remove_subscription/", methods=['POST'])
+# def remove_subscription():
+#     email = str(request.form['email'])
+#     word = str(request.form['word'])
+#     del_subscription = Subscription(email, word)
+#     db.session.delete(del_subscription)
+#     db.session.commit()
+#     return "Removed"
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
