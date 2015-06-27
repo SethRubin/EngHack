@@ -2,10 +2,10 @@
     <head>
         <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
         
-        <link rel="stylesheet" type="text/css" href="../static/css/frontpage.css">
         <link rel="stylesheet" type="text/css" href="../static/css/dc.css" media="screen" />
+        <link rel="stylesheet" type="text/css" 
+            href="{{ url_for('static', filename='css/frontpage.css') }}">
     </head>
-
     <body>
         <div class = "bodyWrapper">
             <div class = "description" >
@@ -58,8 +58,9 @@
         <script src="../static/js/d3.js" charset="utf-8"></script>
         <script src="../static/js/crossfilter.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.0/dc.js" charset="utf-8"></script>
-        <script src= "../static/js/jquery-1.11.3.min.js"></script>
-        <script src="../static/js/front.js"></script>
+        
+        <script src= "{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/front.js') }}"></script>
     </body>
 
 </html>

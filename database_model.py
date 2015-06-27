@@ -3,7 +3,7 @@ import psycopg2
 import urlparse
 import json
 
-from flask import Flask
+from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 from bulk_email import bulk_email
@@ -45,60 +45,50 @@ class Subscription(db.Model):
 #         # self.prev_averages = [None for i in xrange(7)]
 #         self.pub_date = datetime.utcnow()
 
-@app.route('/')
-def hello_world():
-    obj = {
-        'key': 3,
-        'key2': 5,
-        'key3': 6 
-    }
-    return json.dumps(obj)
+send_email = BackgroundScheduler(daemon=True)
+send_email.start()
 
-sendEmail = BackgroundScheduler(daemon=True)
-sendEmail.start()
+# @send_email.scheduled_job('interval', hours=24)
+# def timed_update():
+    
+#     for user in users:
+#         words_to_send = query_words(user.words)
+#         bulk_email(words, [user])
+
+# def query_words(words):
+#     trending_words = []
+#     i = 0
+#     while i < len(words)
+#         try:
+#             if is_word_trending(word):
+#                 words.append(word)
+#             i += 1
+#         except:
+#             time.sleep(60*15)
 
 @sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
     #bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
     pass
 
-@app.route("/create_all/")
-def create_all():
-    db.create_all()
-    return "Created all!"
-
-@app.route("/add_subscription/", methods=['POST'])
-def add_subscription():
-    email=request.form['email']
-    word=request.form['word']
-    newSub = Subscription(email, word)
-    db.session.add(newSub)
-    db.session.commit()
-    return "Subscribed " + email + " to " + word
-
-@app.route("/get_all_subscription/")
-def get_all_subscription():
-    subs = Subscription.query.all()
-    subsStr = []
-    for sub in subs:
-        subsStr.append(str(sub))
-    return json.dumps(subsStr)
-
-@app.route("/get_all_emails/")
 def get_all_emails():
     subs = Subscription.query.all()
-    emails = []
-    for sub in subs:
-        emails.append(sub.email)
-    return json.dumps(emails)
+    s = set([sub.email for sub in subs])
+    return json.dumps(list(s))
 
-@app.route("/remove_subscription/", methods=['POST'])
-def remove_subscription():
-    email=request.form['email']
-    word=request.form['word']
-    del_subscription = Subscription(email, word)
-    db.session.add(del_subscription)
-    db.session.commit()
+def get_words(email):
+    subs = Subscription.query.filter_by(email=email)
+    s = [sub.word for sub in subs]
+    return json.dumps(s)
+
+# @app.route("/remove_subscription/", methods=['POST'])
+# def remove_subscription():
+#     email = str(request.form['email'])
+#     word = str(request.form['word'])
+#     del_subscription = Subscription(email, word)
+#     db.session.delete(del_subscription)
+#     db.session.commit()
+#     return "Removed"
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
