@@ -39,7 +39,7 @@ $(".newSubWord").click(function(e){
     var word = $(".addNewWord").val();
     var email = $(".addNewEmail").val();
     console.log(email);
-    $.post("/add_subscription/", {'email': email, 'word': word}, function(data) {
+    $.post("https://enghack.herokuapp.com/add_subscription/", {'email': email, 'word': word}, function(data) {
         console.log(data);
     });
     if($(".addNewWord").val() != ""){
