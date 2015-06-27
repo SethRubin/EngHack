@@ -69,8 +69,8 @@ def create_all():
 
 @app.route("/add_subscription/", methods=['POST'])
 def add_subscription():
-    email=str(request.form['email'])
-    word=str(request.form['word'])
+    email = str(request.form['email'])
+    word = str(request.form['word'])
     newSub = Subscription(email, word)
     db.session.add(newSub)
     db.session.commit()
@@ -79,15 +79,12 @@ def add_subscription():
 @app.route("/get_all_subscription/")
 def get_all_subscription():
     subs = Subscription.query.all()
-    subsStr = []
-    for sub in subs:
-        subsStr.append(str(sub))
     return json.dumps(subsStr)
 
 @app.route("/remove_subscription/", methods=['POST'])
 def remove_subscription():
-    email=request.form['email']
-    word=request.form['word']
+    email = str(request.form['email'])
+    word = str(request.form['word'])
     del_subscription = Subscription(email, word)
     db.session.add(del_subscription)
     db.session.commit()
