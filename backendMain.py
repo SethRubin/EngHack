@@ -71,7 +71,7 @@ def create_all():
 def add_subscription():
     email=request.form['email']
     word=request.form['word']
-    # newSub = Subscription(email, word)
+    newSub = Subscription(email, word)
     # db.session.add(newSub)
     # db.session.commit()
     return "Subscribed " + email + " to " + word
