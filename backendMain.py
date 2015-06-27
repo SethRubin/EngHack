@@ -80,7 +80,7 @@ def add_subscription():
 def get_all_emails():
     subs = Subscription.query.all()
     s = set([sub.email for sub in subs])
-    return 'ok'
+    return json.dumps(list(s))
 
 # @app.route("/remove_subscription/", methods=['POST'])
 # def remove_subscription():
