@@ -3,11 +3,8 @@ import psycopg2
 import urlparse
 import json
 
-from flask import Flask, request
+from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-
-from bulk_email import bulk_email
-from apscheduler.schedulers.background import BackgroundScheduler
 
 from datetime import datetime
 
