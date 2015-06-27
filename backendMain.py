@@ -75,7 +75,7 @@ def addSubscription():
     return "Added girls for allen.wang@hiswebsite.url"
 
 @app.route("/addword")
-def addSubscription():
+def addWord():
     newWord = Word("girls")
     db.session.add(newSub)
     db.session.commit()
