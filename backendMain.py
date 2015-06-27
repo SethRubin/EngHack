@@ -77,10 +77,10 @@ def add_subscription():
     return "Subscribed " + email + " to " + word
 
 @app.route("/get_all_emails/")
-def get_all_subscription():
+def get_all_emails():
     subs = Subscription.query.all()
-    s = set([sub.email for sub in subs])
-    return json.dumps(s)
+    # s = set([sub.email for sub in subs])
+    return "here"
 
 # @app.route("/remove_subscription/", methods=['POST'])
 # def remove_subscription():
