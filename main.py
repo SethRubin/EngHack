@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import json
 import time
-import sys
 
 from solver.algo import is_word_trending#, word_trending_data
 from bulk_email import bulk_email
@@ -10,6 +9,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 
 app = Flask(__name__, template_folder='template')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
 @app.route('/')
 def hello_world():
@@ -23,19 +24,11 @@ def create_all():
 
 @app.route("/add_subscription/", methods=['POST'])
 def add_subscription():
-    print 1
-    sys.stdout.flush()
     email = str(request.form['email'])
     word = str(request.form['word'])
-    print 2
-    sys.stdout.flush()
     newSub = Subscription(email, word)
-    print 3
-    sys.stdout.flush()
     db.session.add(newSub)
     db.session.commit()
-    print 4
-    sys.stdout.flush()
     return "Subscribed " + email + " to " + word
 
 # @app.route("/get_trending_data/<word>")

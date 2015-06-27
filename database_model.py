@@ -8,10 +8,6 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 from datetime import datetime
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app)
-
 class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=False)
