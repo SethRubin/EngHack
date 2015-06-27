@@ -7,7 +7,7 @@ from solver.algo import is_word_trending#, word_trending_data
 from bulk_email import bulk_email
 from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler
-
+from Flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, template_folder='template')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
