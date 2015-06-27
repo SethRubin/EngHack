@@ -74,7 +74,7 @@ def getAllSub():
     subsStr = []
     for sub in subs:
         subsStr.append(str(sub))
-    return subsStr
+    return json.dumps(subsStr)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
