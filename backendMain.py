@@ -29,6 +29,9 @@ class Subscription(db.Model):
     def __repr__(self):
         return "Email: {0} , word: {1}".format(self.email, self.word)
 
+    def __str__(self):
+        return "Email: {0} , word: {1}".format(self.email, self.word)
+
 @app.route('/')
 def hello_world():
     obj = {
@@ -68,7 +71,10 @@ def addOther():
 @app.route("/getallsub")
 def getAllSub():
     subs = Subscription.query.all()
-    return str(len(subs))
+    subsStr = []
+    for sub in subs:
+        subsStr.append(str(sub))
+    return subsStr
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
