@@ -1,10 +1,8 @@
 from flask import Flask, render_template
-from solver.algo import word_trending_data
 import json
 import time
 
 from bulk_email import bulk_email
-from solver.algo import is_word_trending
 from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -50,7 +48,7 @@ def filter_by_trending(words):
     return trending_words
 
 send_email = BackgroundScheduler(daemon=True)
-@send_email.scheduled_job('interval', min=1)
+@send_email.scheduled_job('interval', minutes=1)
 def timed_update():
     emails = get_all_emails()
     for email in emails:
