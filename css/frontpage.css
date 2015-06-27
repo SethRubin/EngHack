@@ -1,0 +1,136 @@
+body
+{
+    width:100%;
+    height:130%;
+    background-color:dodgerblue;
+}
+
+div.bodyWrapper{
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height:70%;
+    width:60%;
+    
+}
+div.description
+{
+    line-height:50px;
+    border-radius: 5px;
+    min-height: 50px;
+    background-color:#FEFBF7;   
+}
+
+div.selection{
+    margin-top:3%;
+    margin-left:auto;
+    margin-right:auto;
+    width:40%;
+    height:50px;
+    background-color:white;
+    font-weight:bold;
+    font-size:25px;
+    line-height:50px;
+}
+
+div.leftselection{
+    float:left;
+    width:50%;
+    height:100%;
+}
+div.selected{
+    width:100%;
+    background-color:#A2BFF4;
+    height:100%;
+    color:white;
+}
+div.selected:active{
+    background-color:#8299C3;
+}
+
+div.rightselection{
+    float:right;
+    width:50%;
+    height:100%;
+}
+div.unselected{
+    width:100%;
+    background-color:#F8F8E6;
+    height:100%;
+    color:black;
+}
+div.unselected:active{
+    background-color:#FFFFFF;
+}
+
+div.textBox{
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right:auto;
+    padding:0px;
+}
+
+input[type=text]{
+    margin-right:5px;
+    border:2px solid #456879;
+	border-radius:10px;
+	height: 4%;
+	width: 50%;
+    background-color: white;
+}
+input[type=text]:active{
+    background-color:#CCFFFF;
+}
+
+div.sendRequest{
+    margin-top: 3%;
+    width:20%;
+    height: 50px;
+    background-color:#B2FFFF;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:50px;
+    font-weight:bold;
+}
+div.sendRequest:active{
+    background-color:#90CFCF;
+}
+
+div.subscribedWrapper{
+    padding-top:3%;
+    margin-top:5%;
+    width:60%;
+    margin-left: auto;
+    margin-right:auto;
+    background-color:white;   
+}
+
+div.wordSearchWrapper{
+    padding-top:3%;
+    margin-top:5%;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:white;
+}
+
+div.subscribed{
+    margin-top:2%;
+    margin-left: auto;
+    margin-right:auto;
+    width:80%;
+    
+    text-align:left;
+    background-color:white;
+    height:90%;
+}
+
+div.wordSearch{
+    padding-top:2%;
+    margin-left:auto;
+    margin-right:auto;
+    width: 80%;
+    
+    background-color:white;
+    height:90%;
+}
