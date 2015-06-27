@@ -64,8 +64,3 @@ def get_words(email):
 #     db.session.delete(del_subscription)
 #     db.session.commit()
 #     return "Removed"
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False)

@@ -5,7 +5,7 @@ import time
 
 from bulk_email import bulk_email
 from solver.algo import is_word_trending
-from database_model import get_words, get_all_emails
+from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
 
