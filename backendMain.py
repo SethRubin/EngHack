@@ -98,5 +98,14 @@ def getAllSub():
         subsStr.append(str(sub))
     return json.dumps(subsStr)
 
+@app.route("/wordsforemail")
+def getWordsForEmail():
+    requestEmail=request.form['email']
+    subsWithEmail = Subscription.query.filter_by(email=requestEmail).all()
+    words = []
+    for sub in subsWithEmail:
+        words.append(sub.word)
+    return json.dumps(words)
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
