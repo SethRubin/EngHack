@@ -42,8 +42,14 @@ $(".newSubWord").click(function(e){
 
 $(document).on('click','.deleteWord', function(e) {
     var subWordID = "id"+e.target.id;
-    //$("#"+subWordID).css('display','none');
-    //$(e.target).css('display','none');
     $("#"+subWordID).remove();
     $(e.target).remove();
 });
+
+
+function inputFocus(i){
+    if(i.value==i.defaultValue){i.value="";i.style.color="#000";}
+}
+function inputBlur(i){
+    if(i.value==""){i.value=i.defaultValue;i.style.colr="#444" }
+}

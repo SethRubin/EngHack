@@ -1,29 +1,33 @@
 <html>
     <head>
+        <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
+        
         <link rel="stylesheet" type="text/css" href="../static/css/frontpage.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/dc.css" media="screen" />
     </head>
 
     <body>
         <div class = "bodyWrapper">
             <div class = "description" >
-                This is just a place holder for description: need to be added for later use
+                Insert whatever explanation that you wish to explain here.
             </div>
             <div class = "selection">
                 <div class= "leftselection">
                     <div class = "selected">            
-                        email
+                        Subscribe your word
                     </div>
                 </div>
                 
                 <div class = "rightselection">
                     <div class = "unselected">
-                        word
+                        Search your word
                     </div>
                 </div>
             </div>
             
             <div class = "textBox">
-                <input type="text" name="search">
+                <input type="text" name="addNew" title="Enter your email" placeholder="Enter your email" style="color:#888;" onfocus="inputFocus(this)"  onblur="inputBlur(this)" >
+
             </div>
             
             <div class="sendRequest" id="getRequest">
@@ -33,7 +37,7 @@
             <div class = "subscribedWrapper">
                 <div class = "subscribed subscribe">
                     <div class = "subscribeBar">
-                        <input type="text" name="addNew" class = "addNewWord">
+                        <input type="text" name="addNew" class = "addNewWord" title="Enter the word" placeholder="Enter the word" style="color:#888;" onfocus="inputFocus(this)"  onblur="inputBlur(this)">
                         <div class = "newSubWord">
                             Subscribe
                         </div>
@@ -42,10 +46,18 @@
             </div>
             <div class = "wordSearchWrapper">
                 <div class = "wordSearch wordS">
+                    <div class='row'>
+                        <div class='span6' id='dc-magnitude-chart'>
+                            <h4>Events by Magnitude</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
+        <script src="../static/js/d3.js" charset="utf-8"></script>
+        <script src="../static/js/crossfilter.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.0/dc.js" charset="utf-8"></script>
         <script src= "../static/js/jquery-1.11.3.min.js"></script>
         <script src="../static/js/front.js"></script>
     </body>

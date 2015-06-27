@@ -1,8 +1,9 @@
 body
 {
+    font-family: 'Orbitron', sans-serif;
     width:100%;
     height:130%;
-    background-color:#0099FF;
+    background-color:#19A3FF;
 }
 
 div.bodyWrapper{
@@ -24,26 +25,27 @@ div.description
 }
 
 div.selection{
-    margin-top:3%;
+    margin-top:7%;
     margin-left:auto;
     margin-right:auto;
-    width:40%;
+    width:90%;
     height:50px;
     background-color:white;
     font-weight:bold;
-    font-size:25px;
+    font-size:19px;
     line-height:50px;
-    border:1px solid black;
+    border-radius:2px;
 }
 
 div.leftselection{
+    border-radius:2px;
     float:left;
     width:50%;
     height:100%;
 }
 div.selected{
     width:100%;
-    background-color:#0099FF;
+    background-color:#007ACC;//0099FF
     height:100%;
     color:white;
 }
@@ -51,7 +53,8 @@ div.selected:active{
     background-color:#5CADFF;
 }
 
-div.rightselection{
+div.rightselection
+    border-radius:2px;
     float:right;
     width:50%;
     height:100%;
@@ -74,11 +77,13 @@ div.textBox{
 }
 
 input[type=text]{
+    text-align: center;
+    font-size:19px;
     margin-right:5px;
     border:2px solid #456879;
 	border-radius:10px;
 	height: 4%;
-	width: 50%;
+	width: 70%;
     background-color: white;
 }
 input[type=text]:active{
@@ -89,23 +94,25 @@ div.sendRequest{
     margin-top: 3%;
     width:20%;
     height: 50px;
-    background-color:#B2FFFF;
+    background-color:#80CCFF;
     margin-left:auto;
     margin-right:auto;
     line-height:50px;
     font-weight:bold;
+    border-radius:4px;
 }
 div.sendRequest:active{
-    background-color:#90CFCF;
+    background-color:#2479B2;
 }
 
 div.subscribedWrapper{
     display:block;
     padding-top:1%;
     margin-top:5%;
-    width:60%;
+    width:80%;
     margin-left: auto;
     margin-right:auto;
+    border-radius:10px;
     background-color:white;   
 }
 
@@ -150,6 +157,7 @@ div.wordSearchWrapper{
     padding-top:3%;
     margin-top:5%;
     width:80%;
+    border-radius:5px;
     margin-left:auto;
     margin-right:auto;
     background-color:white;
@@ -160,6 +168,7 @@ div.subscribed{
     margin-left: auto;
     margin-right:auto;
     width:90%;
+    border-radius:5px;
     
     text-align:left;
     background-color:white;
