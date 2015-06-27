@@ -25,5 +25,6 @@ def solver(word):
     b = is_current_in_second_std_dev(past_average_times, average_times[0])
     return a and not b
 
-x = solver("marriage")
-print(x)
+while True:
+    print "Please enter a word:"
+    print solver(raw_input())
