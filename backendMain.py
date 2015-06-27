@@ -66,12 +66,7 @@ def addOther():
 
 @app.route("/getallsub")
 def getAllSub():
-    try:
-        subs = []#Subscription.query.all()
-        return subs
-        #return json.dumps(subs)
-    except:
-        return "Error occurred:", sys.exc_info()[0]
+    return "String!"
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
