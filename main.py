@@ -1,14 +1,17 @@
-from flask import Flask, render_template
-from solver.algo import word_trending_data
+from flask import Flask, render_template, request
+import os
 import json
 import time
 
+from solver.algo import is_word_trending#, word_trending_data
 from bulk_email import bulk_email
+from database_model import get_words, get_all_emails, Subscription
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.schedulers.blocking import BlockingScheduler
-
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, template_folder='template')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
 @app.route('/')
 def hello_world():
@@ -29,9 +32,33 @@ def add_subscription():
     db.session.commit()
     return "Subscribed " + email + " to " + word
 
-@app.route("/get_trending_data/<word>")
-def get_trending_data(word):
-    return word_trending_data(word)
+# @app.route("/get_trending_data/<word>")
+# def get_trending_data(word):
+#     return word_trending_data(word)
+
+def filter_by_trending(words):
+    trending_words = []
+    i = 0
+    while i < len(words):
+        try:
+            if is_word_trending(words[i]):
+                words.append(words[i])
+            i += 1
+        except:
+            time.sleep(60*15)
+
+    return trending_words
+
+send_email = BackgroundScheduler(daemon=True)
+@send_email.scheduled_job('interval', minutes=1)
+def timed_update():
+    emails = get_all_emails()
+    for email in emails:
+        subsribed_words = get_words(email)
+        words_to_send = filter_by_trending(subsribed_words)
+        bulk_email(words_to_send, [user])
+
+send_email.start()
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)

@@ -2,7 +2,7 @@
     <head>
         <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
         
-        <link rel="stylesheet" type="text/css" href="../static/css/dc.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dc.css') }}" media="screen" />
         <link rel="stylesheet" type="text/css" 
             href="{{ url_for('static', filename='css/frontpage.css') }}">
     </head>
@@ -14,13 +14,13 @@
             <div class = "selection">
                 <div class= "leftselection">
                     <div class = "selected">            
-                        Subscribe your word
+                        Subscribe
                     </div>
                 </div>
                 
                 <div class = "rightselection">
                     <div class = "unselected">
-                        Search your word
+                        Search
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
             </div>
         </div>
         
-        <script src="../static/js/d3.js" charset="utf-8"></script>
-        <script src="../static/js/crossfilter.js"></script>
+        <script src="{{ url_for('static', filename='js/d3.js') }}" charset="utf-8"></script>
+        <script src="{{ url_for('static', filename='js/crossfilter.js') }}"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.0/dc.js" charset="utf-8"></script>
         
         <script src= "{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
