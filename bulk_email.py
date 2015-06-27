@@ -43,4 +43,3 @@ def bulk_email(words, recipients):
 
     s.quit()
 
-bulk_email(['worda', 'hello'], ['seth.h.rubin@gmail.com'])
