@@ -34,7 +34,7 @@ def hello_world():
 sendEmail = BackgroundScheduler(daemon=True)
 sendEmail.start()
 
-@sendEmail.scheduled_job('interval', seconds=10)
+@sendEmail.scheduled_job('interval', seconds=100000)
 def timed_job():
     bulk_email('yo cron', ['h353wang@uwaterloo.ca', 'seth.h.rubin@gmail.com'])
 
