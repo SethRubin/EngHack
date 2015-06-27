@@ -100,11 +100,14 @@ def getAllSub():
 
 @app.route("/wordsforemail")
 def getWordsForEmail():
+    print request.form
+    print request.form['email']
     requestEmail=request.form['email']
     subsWithEmail = Subscription.query.filter_by(email=requestEmail).all()
     words = []
     for sub in subsWithEmail:
         words.append(sub.word)
+    print words
     return json.dumps(words)
 
 if __name__ == '__main__':
