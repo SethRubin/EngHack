@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from solver.algo import word_trending_data
 import json
 import time
 
@@ -28,7 +29,9 @@ def add_subscription():
     db.session.commit()
     return "Subscribed " + email + " to " + word
 
-# def query_words
+@app.route("/get_trending_data/<word>")
+def get_trending_data(word):
+    return word_trending_data(word)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
