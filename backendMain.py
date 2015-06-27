@@ -81,7 +81,6 @@ def get_all_emails():
     s = set([sub.email for sub in subs])
     return json.dumps(list(s))
 
-@app.route("/get_word/<email>")
 def get_words(email):
     subs = Subscription.query.filter_by(email=email)
     s = [sub.word for sub in subs]
