@@ -19,7 +19,6 @@ $(".rightselection").click(function( e ){
 //dumb way implementation to change the class whenever submit button is pressed based on initial set up
 $(".sendRequest").click(function( e ){
     //TODO: make ajax call to grab json format files
-    
     if($(".leftselection").children().is("div.selected")){       //if left is selected
         $(".subscribedWrapper").css('display','block');
         $(".wordSearchWrapper").css('display','none');
@@ -31,7 +30,18 @@ $(".sendRequest").click(function( e ){
     }
 });
 
-$(".newSubWord").click(function(e){ 
+// $(".subscribedWrapper").click(function (e) {
+//         console.log($(".addNewWord").val());
+
+// })
+
+$(".newSubWord").click(function(e){
+    var word = $(".addNewWord").val();
+    var email = $(".addNewEmail").val();
+    console.log(email);
+    $.post("/add_subscription/", {'email': email, 'word': word}, function(data) {
+        console.log(data);
+    });
     if($(".addNewWord").val() != ""){
         ++wordCount;
         $(".subscribed").append("<div class = 'wordList' id='id"+wordCount+"'>" + $(".addNewWord").val() + "</div><div class = 'deleteWord' id='"+wordCount+"'></div>");
